@@ -1,6 +1,6 @@
 app_name = "qbo_coa_sync"
 app_title = "QBO CoA Sync"
-app_publisher = "Greensight Ag"
+app_publisher = "GreenSight Inc"
 app_description = "Compare and sync the Chart of Accounts between QuickBooks Online and ERPNext."
 app_email = "james@greensightag.com"
 app_license = "GPL-3.0-or-later"
