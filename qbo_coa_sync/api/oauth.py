@@ -140,7 +140,7 @@ def get_valid_access_token(settings=None) -> str:
 @frappe.whitelist()
 def start_auth():
     """Build the Intuit authorize URL and 302-redirect the browser to it."""
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     settings = _settings()
     if not settings.client_id:
         frappe.throw(_("Set Client ID in QuickBooks Settings before connecting."))
@@ -207,7 +207,7 @@ def callback(code: str | None = None, state: str | None = None, realmId: str | N
 
 @frappe.whitelist()
 def disconnect():
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     settings = _settings()
     settings.access_token = None
     settings.refresh_token = None
@@ -221,7 +221,7 @@ def disconnect():
 
 @frappe.whitelist()
 def test_connection():
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     from qbo_coa_sync.api.qbo_client import QBOClient
 
     info = QBOClient().get_company_info()

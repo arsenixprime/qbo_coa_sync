@@ -304,7 +304,7 @@ def _build_unified_tree(pairs, only_erp, only_qbo, erp_accounts, qbo_accounts):
 
 @frappe.whitelist()
 def get_comparison():
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     settings = _settings()
     company = settings.erpnext_company
     if not company:
@@ -333,7 +333,7 @@ def get_comparison():
 
 @frappe.whitelist()
 def refresh_from_qbo():
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     from qbo_coa_sync.api.qbo_client import refresh_account_cache
 
     n = refresh_account_cache()

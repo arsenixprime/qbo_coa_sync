@@ -12,8 +12,7 @@
  "owner": "Administrator",
  "page_name": "coa-compare",
  "roles": [
-  { "role": "System Manager" },
-  { "role": "Accounts Manager" }
+  { "role": "System Manager" }
  ],
  "script": null,
  "standard": "Yes",

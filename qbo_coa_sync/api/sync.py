@@ -110,7 +110,7 @@ def _apply_qbo_to_erp_fields(acc, qbo: dict, root_type: str, account_type: str |
 
 @frappe.whitelist()
 def sync_qbo_to_erpnext(qbo_id: str):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     company = _company()
     qbo = _qbo_cache(qbo_id)
 
@@ -185,7 +185,7 @@ def _erp_to_qbo_payload(acc: dict) -> dict:
 
 @frappe.whitelist()
 def sync_erpnext_to_qbo(erpnext_account: str):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     company = _company()
     from qbo_coa_sync.api.qbo_client import QBOClient
 
@@ -249,7 +249,7 @@ def sync_erpnext_to_qbo(erpnext_account: str):
 
 @frappe.whitelist()
 def manual_link(erpnext_account: str, qbo_id: str):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     company = _company()
     qbo = _qbo_cache(qbo_id)
     acc = frappe.get_doc("Account", erpnext_account)
@@ -269,7 +269,7 @@ def manual_link(erpnext_account: str, qbo_id: str):
 
 @frappe.whitelist()
 def unlink(erpnext_account: str):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     acc = frappe.get_doc("Account", erpnext_account)
     acc.quickbooks_id = None
     acc.quickbooks_sync_token = None
@@ -282,7 +282,7 @@ def unlink(erpnext_account: str):
 
 @frappe.whitelist()
 def update_erpnext_field(erpnext_account: str, field: str, value: str | None):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     if field not in ALLOWED_ERP_INLINE_FIELDS:
         frappe.throw(_("Field {0} is not editable from this view.").format(field))
     acc = frappe.get_doc("Account", erpnext_account)
@@ -293,7 +293,7 @@ def update_erpnext_field(erpnext_account: str, field: str, value: str | None):
 
 @frappe.whitelist()
 def update_qbo_field(qbo_id: str, field: str, value: str | None):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     if field not in ALLOWED_QBO_INLINE_FIELDS:
         frappe.throw(_("Field {0} is not editable from this view.").format(field))
     from qbo_coa_sync.api.qbo_client import QBOClient, serialize_qbo_account
@@ -372,7 +372,7 @@ def _run_bulk(items, runner):
 
 @frappe.whitelist()
 def bulk_sync_qbo_to_erpnext(qbo_ids):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     if isinstance(qbo_ids, str):
         qbo_ids = frappe.parse_json(qbo_ids)
     qbo_ids = _qbo_topdown_order(list(qbo_ids))
@@ -381,7 +381,7 @@ def bulk_sync_qbo_to_erpnext(qbo_ids):
 
 @frappe.whitelist()
 def bulk_sync_erpnext_to_qbo(erpnext_accounts):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     if isinstance(erpnext_accounts, str):
         erpnext_accounts = frappe.parse_json(erpnext_accounts)
     names = _erp_topdown_order(list(erpnext_accounts))
@@ -392,7 +392,7 @@ def bulk_sync_erpnext_to_qbo(erpnext_accounts):
 def bulk_link_by_number():
     """Auto-link accounts where ERPNext.account_number == QBO.acct_num and the number is
     unambiguous on both sides. Skips already-linked accounts."""
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     company = _company()
 
     erp_rows = frappe.get_all(
@@ -441,7 +441,7 @@ def bulk_link_by_number():
 
 @frappe.whitelist()
 def search_unmatched_qbo(query: str = "", limit: int = 50):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     linked_ids = [r[0] for r in frappe.db.sql("SELECT quickbooks_id FROM tabAccount WHERE quickbooks_id IS NOT NULL AND quickbooks_id != ''")]
     filters: list[Any] = []
     if linked_ids:
@@ -458,7 +458,7 @@ def search_unmatched_qbo(query: str = "", limit: int = 50):
 
 @frappe.whitelist()
 def search_unmatched_erpnext(query: str = "", limit: int = 50):
-    frappe.only_for(["System Manager", "Accounts Manager"])
+    frappe.only_for("System Manager")
     company = _company()
     filters = {
         "company": company,
