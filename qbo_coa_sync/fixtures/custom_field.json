@@ -1,6 +1,7 @@
 [
  {
   "doctype": "Custom Field",
+  "name": "Account-quickbooks_id",
   "dt": "Account",
   "fieldname": "quickbooks_id",
   "label": "QuickBooks ID",
@@ -15,6 +16,7 @@
  },
  {
   "doctype": "Custom Field",
+  "name": "Account-quickbooks_sync_token",
   "dt": "Account",
   "fieldname": "quickbooks_sync_token",
   "label": "QuickBooks Sync Token",
@@ -28,6 +30,7 @@
  },
  {
   "doctype": "Custom Field",
+  "name": "Account-qbo_description",
   "dt": "Account",
   "fieldname": "qbo_description",
   "label": "Description",
