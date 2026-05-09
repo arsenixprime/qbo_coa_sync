@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-05-08 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_oauth",
+  "environment",
+  "client_id",
+  "client_secret",
+  "column_break_oauth",
+  "redirect_uri",
+  "scope",
+  "section_connection",
+  "connection_status",
+  "realm_id",
+  "column_break_connection",
+  "access_token_expires_at",
+  "refresh_token_expires_at",
+  "last_pulled_qbo_at",
+  "section_tokens",
+  "access_token",
+  "refresh_token",
+  "section_company",
+  "erpnext_company",
+  "section_mapping",
+  "account_type_mapping"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_oauth",
+   "fieldtype": "Section Break",
+   "label": "OAuth Application"
+  },
+  {
+   "default": "Sandbox",
+   "fieldname": "environment",
+   "fieldtype": "Select",
+   "label": "Environment",
+   "options": "Sandbox\nProduction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "client_secret",
+   "fieldtype": "Password",
+   "label": "Client Secret",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_oauth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Register this exact URL in the Intuit Developer portal under your app's Redirect URIs. Auto-populated from this site's URL.",
+   "fieldname": "redirect_uri",
+   "fieldtype": "Data",
+   "label": "Redirect URI",
+   "read_only": 1
+  },
+  {
+   "default": "com.intuit.quickbooks.accounting",
+   "fieldname": "scope",
+   "fieldtype": "Data",
+   "label": "Scope",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_connection",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "default": "Not Connected",
+   "fieldname": "connection_status",
+   "fieldtype": "Data",
+   "label": "Connection Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "realm_id",
+   "fieldtype": "Data",
+   "label": "QBO Realm / Company ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_connection",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "access_token_expires_at",
+   "fieldtype": "Datetime",
+   "label": "Access Token Expires At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "refresh_token_expires_at",
+   "fieldtype": "Datetime",
+   "label": "Refresh Token Expires At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_pulled_qbo_at",
+   "fieldtype": "Datetime",
+   "label": "Last Pulled QBO At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_tokens",
+   "fieldtype": "Section Break",
+   "label": "Tokens (encrypted)"
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "refresh_token",
+   "fieldtype": "Password",
+   "label": "Refresh Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_company",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Company"
+  },
+  {
+   "fieldname": "erpnext_company",
+   "fieldtype": "Link",
+   "label": "ERPNext Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_mapping",
+   "fieldtype": "Section Break",
+   "label": "Account Type Mapping"
+  },
+  {
+   "fieldname": "account_type_mapping",
+   "fieldtype": "Table",
+   "label": "Account Type Mapping",
+   "options": "QuickBooks Account Type Mapping"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-05-08 00:00:00",
+ "modified_by": "Administrator",
+ "module": "QBO CoA Sync",
+ "name": "QuickBooks Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "System Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

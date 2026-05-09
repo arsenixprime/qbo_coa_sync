@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:qbo_id",
+ "creation": "2026-05-08 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "qbo_id",
+  "name_field",
+  "acct_num",
+  "account_type",
+  "account_sub_type",
+  "parent_qbo_id",
+  "fully_qualified_name",
+  "description",
+  "currency",
+  "active",
+  "sync_token",
+  "last_pulled_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "qbo_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "QBO Id",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "name_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name"
+  },
+  {
+   "fieldname": "acct_num",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Account Number"
+  },
+  {
+   "fieldname": "account_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Account Type"
+  },
+  {
+   "fieldname": "account_sub_type",
+   "fieldtype": "Data",
+   "label": "Account Sub Type"
+  },
+  {
+   "fieldname": "parent_qbo_id",
+   "fieldtype": "Data",
+   "label": "Parent QBO Id"
+  },
+  {
+   "fieldname": "fully_qualified_name",
+   "fieldtype": "Data",
+   "label": "Fully Qualified Name"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "fieldname": "sync_token",
+   "fieldtype": "Data",
+   "label": "Sync Token"
+  },
+  {
+   "fieldname": "last_pulled_at",
+   "fieldtype": "Datetime",
+   "label": "Last Pulled At"
+  }
+ ],
+ "links": [],
+ "modified": "2026-05-08 00:00:00",
+ "modified_by": "Administrator",
+ "module": "QBO CoA Sync",
+ "name": "QuickBooks Account Cache",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

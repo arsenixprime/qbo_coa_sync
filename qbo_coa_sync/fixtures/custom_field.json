@@ -1,0 +1,40 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "Account",
+  "fieldname": "quickbooks_id",
+  "label": "QuickBooks ID",
+  "fieldtype": "Data",
+  "unique": 1,
+  "read_only": 1,
+  "no_copy": 1,
+  "insert_after": "account_number",
+  "translatable": 0,
+  "module": "QBO CoA Sync",
+  "description": "QBO Account.Id this ERPNext account is linked to. Set automatically by QBO CoA Sync."
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Account",
+  "fieldname": "quickbooks_sync_token",
+  "label": "QuickBooks Sync Token",
+  "fieldtype": "Data",
+  "read_only": 1,
+  "hidden": 1,
+  "no_copy": 1,
+  "insert_after": "quickbooks_id",
+  "translatable": 0,
+  "module": "QBO CoA Sync"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Account",
+  "fieldname": "qbo_description",
+  "label": "Description",
+  "fieldtype": "Small Text",
+  "insert_after": "quickbooks_sync_token",
+  "translatable": 0,
+  "module": "QBO CoA Sync",
+  "description": "Mirrors QBO Account.Description. Editable from the CoA Compare page."
+ }
+]

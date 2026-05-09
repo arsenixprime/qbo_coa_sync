@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-05-08 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "qbo_account_type",
+  "qbo_account_subtype",
+  "erpnext_root_type",
+  "erpnext_account_type"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "qbo_account_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "QBO Account Type",
+   "options": "\nBank\nOther Current Asset\nFixed Asset\nOther Asset\nAccounts Receivable\nEquity\nExpense\nOther Expense\nCost of Goods Sold\nIncome\nOther Income\nAccounts Payable\nCredit Card\nLong Term Liability\nOther Current Liability",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "description": "Optional. Free text — leave blank to make this row the fallback for the QBO Account Type above.",
+   "fieldname": "qbo_account_subtype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "QBO Account Sub-Type"
+  },
+  {
+   "columns": 2,
+   "fieldname": "erpnext_root_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "ERPNext Root Type",
+   "options": "\nAsset\nLiability\nEquity\nIncome\nExpense",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "erpnext_account_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "ERPNext Account Type",
+   "options": "\nBank\nCash\nReceivable\nPayable\nTax\nStock\nStock Adjustment\nStock Received But Not Billed\nFixed Asset\nAccumulated Depreciation\nDepreciation\nCost of Goods Sold\nIncome Account\nExpense Account\nChargeable\nCapital Work in Progress\nAsset Received But Not Billed\nEquity\nLiability\nRound Off\nTemporary"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-08 00:00:00",
+ "modified_by": "Administrator",
+ "module": "QBO CoA Sync",
+ "name": "QuickBooks Account Type Mapping",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

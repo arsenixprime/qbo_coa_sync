@@ -1,0 +1,1 @@
+# patches go here, one per line, in the form: qbo_coa_sync.patches.<module_path>.<function>
