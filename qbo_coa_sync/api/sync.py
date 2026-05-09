@@ -193,6 +193,15 @@ def sync_erpnext_to_qbo(erpnext_account: str):
     if acc.company != company:
         frappe.throw(_("Account {0} doesn't belong to the configured company.").format(erpnext_account))
 
+    # ERPNext roots (no parent_account) are organizational placeholders — QBO has no equivalent.
+    # Refuse before hitting the QBO API; otherwise we'd create an orphan in QBO and then fail
+    # locally with "Root cannot be edited" when ERPNext blocks the save.
+    if not acc.parent_account:
+        frappe.throw(_(
+            "{0} is an ERPNext root account and can't be synced to QuickBooks. "
+            "Sync its children instead."
+        ).format(acc.name))
+
     if acc.parent_account:
         parent_qbo_id = frappe.db.get_value("Account", acc.parent_account, "quickbooks_id")
         if not parent_qbo_id and frappe.db.get_value("Account", acc.parent_account, "is_group"):

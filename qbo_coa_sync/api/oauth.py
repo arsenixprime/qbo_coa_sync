@@ -78,6 +78,9 @@ def _persist_tokens(settings, token_response: dict) -> None:
     settings.refresh_token_expires_at = now + timedelta(seconds=refresh_lifetime)
     settings.connection_status = "Connected"
     settings.save(ignore_permissions=True)
+    # `respond_as_web_page` (used by the OAuth callback) bypasses Frappe's normal
+    # end-of-request commit, so write through explicitly. Cheap; safe for refresh-from-API path too.
+    frappe.db.commit()
 
 
 # ---- token lifecycle --------------------------------------------------------
@@ -90,7 +93,8 @@ def get_valid_access_token(settings=None) -> str:
     :class:`frappe.AuthenticationError` if refresh fails (the user must reconnect).
     """
     settings = settings or _settings()
-    expires_at = settings.access_token_expires_at
+    # Frappe Single docs return datetime fields as strings depending on source — coerce.
+    expires_at = frappe.utils.get_datetime(settings.access_token_expires_at) if settings.access_token_expires_at else None
     if expires_at and (expires_at - now_datetime()).total_seconds() > ACCESS_REFRESH_BUFFER_SECONDS:
         token = _get_secret(settings, "access_token")
         if token:
