@@ -107,4 +107,4 @@ Many of the unit tests use `unittest.mock` to stub `frappe.get_doc`, `frappe.db.
 
 ## License
 
-MIT — see [license.txt](license.txt).
+GPL-3.0-or-later — see [license.txt](license.txt).
